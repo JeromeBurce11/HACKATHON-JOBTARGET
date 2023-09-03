@@ -12,7 +12,8 @@ import Reset from './components/Reset';
 import Applicant  from './components/Applicant';
 import AddApplicant from  './components/AddApplicant';
 import EditApplicant from './components/EditApplicant';
-
+import JobPosting from './components/JobPosting';
+import AddJob from './components/AddJob';
 
 /** auth middleware */
 import { AuthorizeUser, ProtectRoute } from './middleware/auth'
@@ -26,6 +27,14 @@ const router = createBrowserRouter([
     {
         path : '/applicant',
         element : <Applicant></Applicant>
+    },
+    {
+        path : '/job',
+        element : <JobPosting></JobPosting>
+    },
+    {
+        path : '/add-job',
+        element : <AddJob></AddJob>
     },
     {
         path : '/add-applicant',

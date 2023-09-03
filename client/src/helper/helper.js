@@ -166,7 +166,56 @@ export async function deleteApplicant({id}){
     }
 }
 
+export async function addJob(details){
+    try {
 
+        const { data, status } = await axios.post('/api/job', details );
 
+        return Promise.resolve({ data, status})
+    } catch (error) {
+        return Promise.reject({ error })
+    }
+}
 
+export async function getJobs(){
+    try {
+        const { data, status } = await axios.get('/api/jobs' );
 
+        return Promise.resolve({ data, status})
+    } catch (error) {
+        return Promise.reject({ error })
+    }
+}
+
+export async function getJobDetailsById({ id }){
+    try {
+        const { data } = await axios.get(`/api/applicant/${id}`);
+        return { data };
+    } catch (error) {
+        return { error : "Password doesn't Match...!"}
+    }
+}
+
+export async function updateJob(details){
+    try {
+
+        const { data, status } = await axios.put('/api/update/job', details );
+        console.log("HELPPERRR Data get job id :", data);
+
+        return Promise.resolve({ data, status})
+    } catch (error) {
+        return Promise.reject({ error })
+    }
+}
+
+export async function deleteJob({id}){
+    try {
+        console.log("ID : ",id);
+        const { data, status } = await axios.delete(`/api/delete/applicant/${id}`);
+        console.log("DATA DELETE :", data);
+
+        return Promise.resolve({ data, status})
+    } catch (error) {
+        return Promise.reject({ error })
+    }
+}

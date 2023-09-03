@@ -9,7 +9,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { getAllApplicant, deleteApplicant } from "../helper/helper";
+import { getJobs, deleteJob } from "../helper/helper";
 import { Link, useNavigate } from "react-router-dom";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
@@ -43,19 +43,19 @@ const style = {
 export default function BasicTable() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const [applicants, setApplicants] = useState([]);
-  const [applicantId, setApplicantId] = useState('');
+  const [jobs, setJobs] = useState([]);
+  const [jobId, setJobId] = useState('');
   const handleOpen = (id) => {
     console.log("asdjflajdf :",id);
     setOpen(true);
-    setApplicantId(id);
+    setJobId(id);
   };
   const handleClose = () => setOpen(false);
 
-  const handleDeleteApplicant =() => {
-    let deleteApplicantPromise =  deleteApplicant({id: applicantId});
+  const handleDeleteJob =() => {
+    let deleteJobPromise =  deleteJob({id: jobId});
 
-    toast.promise(deleteApplicantPromise, {
+    toast.promise(deleteJobPromise, {
         loading: 'Checking...',
         success : <b>Deleted Successfully...!</b>,
         error :() => <b>Error in deletion</b>
@@ -63,24 +63,25 @@ export default function BasicTable() {
       setOpen(false);
   };
 
-  const handleEditApplicant =(id)=>{
-    navigate(`/applicant/${id}`);
+  const handleEditJob =(id)=>{
+    navigate(`/job/${id}`);
   }
 
-  const handleAddApplicant = () => {
-    navigate("/add-applicant");
+  const handleAddJob = () => {
+    navigate("/add-job");
   };
   useEffect(() => {
     if(!open){
-      getAllApplicant().then(({ data }) => {
-        setApplicants(data);
+        getJobs().then(({ data }) => {
+        setJobs(data);
       });
     }
   }, [open]);
 
   useEffect(() => {
-    getAllApplicant().then(({ data }) => {
-      setApplicants(data);
+    getJobs().then(({ data }) => {
+        console.log("burce : ",data);
+        setJobs(data);
     });
   }, []);
 
@@ -101,6 +102,9 @@ export default function BasicTable() {
   }
   function handleJobPosting(){
     navigate('/job')
+  }
+  function handleApplicants(){
+    navigate('/applicant')
   }
   function handleProfile(){
     navigate('/profile')
@@ -140,6 +144,7 @@ export default function BasicTable() {
                 open={Boolean(anchorEl)}
                 onClose={handleCloseAppBar}
               >
+                 <MenuItem onClick={handleApplicants}>View All Applicants</MenuItem>
                  <MenuItem onClick={handleJobPosting}>View Job Posting</MenuItem>
                 <MenuItem onClick={handleProfile}>View Profile</MenuItem>
                 <MenuItem onClick={userLogout}>Logout</MenuItem>
@@ -160,9 +165,9 @@ export default function BasicTable() {
           variant="contained"
           color="success"
           margin-left={20}
-          onClick={() => handleAddApplicant()}
+          onClick={() => handleAddJob()}
         >
-          Create an Applicant
+          Create a Job
         </Button>
         <Modal
           open={open}
@@ -176,7 +181,7 @@ export default function BasicTable() {
             </Typography>
             <Divider  />
             <Typography id="modal-modal-description" sx={{ mt: 3 ,mb: 4 }}>
-              Are you sure you want to delete this applicant ?
+              Are you sure you want to delete this job ?
             </Typography>
             <Button
                       variant="outlined"
@@ -190,30 +195,28 @@ export default function BasicTable() {
                       variant="contained"
                       color="error"
                       margin={2}
-                      onClick={() => handleDeleteApplicant()}
+                      onClick={() => handleDeleteJob()}
                     >
-                      Delete an applicant
+                      Delete a job
                     </Button>
           </Box>
         </Modal>
         <Typography id="modal-modal-title" variant="h5" component="h2" sx={{ mb: 2, m: 5  }}>
-        <b>All Applicants </b>
+        <b>All Jobs </b>
             </Typography>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 850 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell><b>Firstname</b></TableCell>
-                <TableCell align="right"><b>Lastname</b></TableCell>
-                <TableCell align="right"><b>Email</b></TableCell>
-                <TableCell align="right"><b>Address</b></TableCell>
-                <TableCell align="right"><b>Mobile</b></TableCell>
-                <TableCell align="right"><b>Status</b></TableCell>
+                <TableCell><b>Job Id</b></TableCell>
+                <TableCell align="right"><b>Title</b></TableCell>
+                <TableCell align="right"><b>Company Name</b></TableCell>
+             
                 <TableCell align="right"><b>Action</b></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {applicants.map((row) => (
+              {jobs.map((row) => (
                 <TableRow
                   key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -221,31 +224,25 @@ export default function BasicTable() {
                   {/* <TableCell component="th" scope="row">
                 {row.name}
               </TableCell> */}
-                  <TableCell align="right">{row.firstname}</TableCell>
-                  <TableCell align="right">{row.lastname}</TableCell>
-                  <TableCell align="right">{row.email}</TableCell>
+                  <TableCell align="right"><b>{row._id}</b></TableCell>
+                  <TableCell align="right">{row.title}</TableCell>
+                  <TableCell align="right">{row.companyName}</TableCell>
 
-                  <TableCell align="right">{row.address}</TableCell>
-                  <TableCell align="right">{row.mobile}</TableCell>
-                  <TableCell align="right">
-                    <Chip
-                      label={row.status}
-                      color={
-                        row.status === "PASSED"
-                          ? "success"
-                          : row.status === "IN PROGRESS"
-                          ? "primary"
-                          : "error"
-                      }
-                    />
-                  </TableCell>
                   <TableCell align="right">
                     {" "}
                     <Button
                       variant="contained"
+                      color="success"
+                      margin={2}
+                      onClick={() => handleEditJob(row._id)}
+                    >
+                      View Details
+                    </Button>
+                    <Button
+                      variant="contained"
                       color="primary"
                       margin={2}
-                      onClick={() => handleEditApplicant(row._id)}
+                      onClick={() => handleEditJob(row._id)}
                     >
                       Edit
                     </Button>
