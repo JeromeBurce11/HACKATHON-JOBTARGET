@@ -95,6 +95,7 @@ export default function BasicTable() {
                                     type="button"
                                     onClick={()=>onSubmitResume(item._id)}
                                 >
+                                    
                                     Apply now
                                 </button>
                             </Grid>
