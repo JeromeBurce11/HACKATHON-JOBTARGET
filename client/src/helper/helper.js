@@ -131,6 +131,29 @@ export async function addApplicant(details){
         return Promise.reject({ error })
     }
 }
+export async function resumeParser(jobId,file){
+    try {
+    //    const filename = file.name;
+    
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("jobId",jobId)
+
+        const { data, status } = await axios.post('/api/resume-parser',formData,{
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          } );
+        //   console.log("data: ",data)
+
+          
+
+        return Promise.resolve({ data, status})
+    } catch (error) {
+        return Promise.reject({ error })
+    }
+}
+
 
 export async function getApplicantDetailsById({ id }){
     try {
@@ -140,6 +163,7 @@ export async function getApplicantDetailsById({ id }){
         return { error : "Password doesn't Match...!"}
     }
 }
+
 
 export async function updateApplicant(details){
     try {

@@ -42,6 +42,7 @@ export default function Register() {
   })
 
   const onUpload = async e => {
+    console.log("filee  :",e.target.files[0]);
     const base64 = await convertToBase64(e.target.files[0]);
     setFile(base64);
   }

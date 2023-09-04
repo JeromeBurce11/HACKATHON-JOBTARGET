@@ -17,6 +17,7 @@ import AddJob from './components/AddJob';
 import EditJob from './components/EditJob';
 import ViewDetails from './components/ViewDetails';
 import ApplicantDashboard from './components/ApplicantDashboard';
+import ParserPage from './components/ParserPage';
 
 /** auth middleware */
 import { AuthorizeUser, ProtectRoute } from './middleware/auth'
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
     {
         path : '/login',
         element : <Username></Username>
+    },
+    {
+        path : '/parser-page/:id',
+        element : <ParserPage></ParserPage>
     },
     {
         path : '/applicant',

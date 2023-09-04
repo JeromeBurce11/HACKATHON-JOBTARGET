@@ -1,12 +1,12 @@
 import child_process from 'child_process';
 
-run_script("python", ["main.py","extract","Resume.pdf"], function(output, exit_code) {
-    console.log("Process Finished.");
-    console.log('closing code: ' + exit_code);
-    console.log('Full output of script: ',output);
-});
+// run_script("python", ["main.py","extract","Resume.pdf"], function(output, exit_code) {
+//     console.log("Process Finished.");
+//     console.log('closing code: ' + exit_code);
+//     console.log('Full output of script: ',output);
+// });
 
-console.log ("Continuing to do node things while the process runs at the same time...");
+// console.log ("Continuing to do node things while the process runs at the same time...");
 
 // This function will output the lines from the script 
 // AS is runs, AND will return the full combined output

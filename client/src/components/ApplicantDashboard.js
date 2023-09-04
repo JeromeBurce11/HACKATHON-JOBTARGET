@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
-import { getJobs, deleteJob } from "../helper/helper";
+import { getJobs, deleteJob,resumeParser } from "../helper/helper";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../styles/JobList.module.css";
 import toast, { Toaster } from "react-hot-toast";
@@ -14,6 +14,9 @@ export default function BasicTable() {
     const [open, setOpen] = useState(false);
     const [jobs, setJobs] = useState([]);
     const [jobId, setJobId] = useState("");
+    // const [file, setFile] = useState();
+
+
     const handleOpen = (id) => {
         console.log("asdjflajdf :", id);
         setOpen(true);
@@ -38,16 +41,7 @@ export default function BasicTable() {
         setOpen(false);
     };
 
-    const handleEditJob = (id) => {
-        navigate(`/job/${id}`);
-    };
-    const handleViewJob = (id) => {
-        navigate(`/view-job/${id}`);
-    };
-
-    const handleAddJob = () => {
-        navigate("/add-job");
-    };
+    
     useEffect(() => {
         if (!open) {
             getJobs().then(({ data }) => {
@@ -66,50 +60,23 @@ export default function BasicTable() {
     const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
 
-    const handleChange = (event) => {
-        setAuth(event.target.checked);
-    };
-
-    const handleChangeSearch = () => { };
-
-    const handleMenu = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    function userLogout() {
-        localStorage.removeItem("token");
-        navigate("/");
-    }
-    function handleJobPosting() {
-        navigate("/job");
-    }
-
-    function handleApplicants() {
-        navigate("/applicant");
-    }
-    function handleProfile() {
-        navigate("/profile");
-    }
-
-    const handleCloseAppBar = () => {
-        setAnchorEl(null);
-    };
-
-    const onSubmitResume = () => {
-        console.log("GWAPO KO");
-    };
+  
+    const onSubmitResume = (id)=>{
+        navigate(`/parser-page/${id}`);
+      }
+      
 
     return (
         <>
             <div className="flex justify-center text-center items-center m-10">
                 
-                <input
+                {/* <input
                     className={`${styles.textbox}`}
                     type="text"
                     // value={region}
                     placeholder="Search.........."
                     onChange={handleChangeSearch}
-                />
+                /> */}
                 
             </div>
             {jobs.map((item) => (
@@ -125,9 +92,8 @@ export default function BasicTable() {
                             <Grid item xs={4}>
                                 <button
                                     className={styles.btn}
-                                    ty
-                                    pe="submit"
-                                    onClick={onSubmitResume}
+                                    type="button"
+                                    onClick={()=>onSubmitResume(item._id)}
                                 >
                                     Apply now
                                 </button>
