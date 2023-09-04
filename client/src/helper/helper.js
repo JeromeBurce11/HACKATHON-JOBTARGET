@@ -189,7 +189,7 @@ export async function getJobs(){
 
 export async function getJobDetailsById({ id }){
     try {
-        const { data } = await axios.get(`/api/applicant/${id}`);
+        const { data } = await axios.get(`/api/job/${id}`);
         return { data };
     } catch (error) {
         return { error : "Password doesn't Match...!"}

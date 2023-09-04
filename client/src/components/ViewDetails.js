@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import { getJobDetailsById, updateJob } from "../helper/helper";
+import { getJobDetailsById } from "../helper/helper";
 
 import Select from "@mui/material/Select";
 import styles from "../styles/Job.module.css";
@@ -155,43 +155,9 @@ export default function Profile() {
   }
  
   
-  const onUpdateJob = () =>{
-    const jobData ={ 
-        id,
-        requisitionName,
-        title,
-        description,
-        companyName,
-        applyUrl,
-        experience,
-        jobFunction,
-        industry,
-        jobType,
-        requirements,
-        duration,
-        education,
-        salaryLow,
-        salaryHigh,
-        salaryType,
-        contactName,
-        contactEmail,
-        contactPhone,
-        entryLevel,
-        city,
-        state,
-        region,
-        country,
-        zip,
-        postalCode };
-    console.log("burce:  ", jobData);
-    let updateJobPromise =  updateJob(jobData);
-    toast.promise(updateJobPromise, {
-        loading: 'Checking...',
-        success : <b> Successfully...!</b>,
-        error :() => <b>Job not added</b>
-      });
+  const onBack = () =>{
     navigate('/job');
- 
+
   }
 
   return (
@@ -364,6 +330,7 @@ export default function Profile() {
                 />
               </div>
               <div className="name flex w-3/4 gap-10">
+              <p>City</p>
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text" 
@@ -372,6 +339,7 @@ export default function Profile() {
                   required
                   onChange={handleChangeCity}
                 />
+                <p>State</p>
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text"
@@ -382,6 +350,7 @@ export default function Profile() {
                 />
               </div>
               <div className="name flex w-3/4 gap-10">
+              <p>Region</p>
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text" 
@@ -390,6 +359,7 @@ export default function Profile() {
                   required
                   onChange={handleChangeRegion}
                 />
+                <p>Country</p>
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text"
@@ -400,6 +370,7 @@ export default function Profile() {
                 />
               </div>
               <div className="name flex w-3/4 gap-10">
+              <p>Zip</p>
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text" 
@@ -408,6 +379,7 @@ export default function Profile() {
                   required
                   onChange={handleChangeZip}
                 />
+                <p>Postal Code</p>
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text"
@@ -417,6 +389,7 @@ export default function Profile() {
                   onChange={handleChangePostalCode}
                 />
               </div>
+              <p>Contact Email</p>
               <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text"
@@ -425,11 +398,9 @@ export default function Profile() {
                   required
                   onChange={handleChangesContactEmail}
                 />
-              
-              
              
-              <button className={styles.btn} ty pe="submit" onClick={onUpdateJob}>
-                Update Job
+              <button className={styles.btn} type="submit" onClick={onBack}>
+                Back
               </button>
             </div>
           </form>

@@ -1,4 +1,17 @@
 import ApplicantModel from "../model/Applicant.model.js";
+import child_process from 'child_process';
+import run_script from "../openapi/resumeParser.js";
+
+export async function uploadResume(req,res){
+
+    const file = "./openapi/Resume.pdf";
+    run_script("python", ["./openapi/main.py","extract", file], function(output, exit_code) {
+        console.log("Process Finished.");
+        console.log('closing code: ' + exit_code);
+        console.log('Full output of script: ',output);
+        return res.status(200).send(output);
+    });
+}
 
 export async function createApplicant(req, res) {
   try {

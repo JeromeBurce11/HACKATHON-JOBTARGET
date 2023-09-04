@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
-import Chip from "@mui/material/Chip";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -234,7 +233,7 @@ export default function BasicTable() {
                       variant="contained"
                       color="success"
                       margin={2}
-                      onClick={() => handleEditJob(row._id)}
+                    //   onClick={() => handleVi(row._id)}/
                     >
                       View Details
                     </Button>

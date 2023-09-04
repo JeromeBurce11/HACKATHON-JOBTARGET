@@ -105,13 +105,13 @@ export async function getJobById(req,res){
 
 export async function updateJob(req,res){
     
-    const { jobId } = req.body;
-    console.log("job IDDD :", jobId);
+    const { id } = req.body;
+    console.log("job IDDD :", id);
     const body = req.body;
     console.log("BUUURE id :", body);
 
-    if(jobId){
-        JobPostingModel.updateOne({ _id : jobId }, body, function(err, data){
+    if(id.id){
+        JobPostingModel.updateOne({ _id : id.id }, body, function(err, data){
             if(err) throw err;
 
             return res.status(201).send({ msg : "Job details Updated...!"});

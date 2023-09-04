@@ -14,6 +14,7 @@ import AddApplicant from  './components/AddApplicant';
 import EditApplicant from './components/EditApplicant';
 import JobPosting from './components/JobPosting';
 import AddJob from './components/AddJob';
+import EditJob from './components/EditJob'
 
 /** auth middleware */
 import { AuthorizeUser, ProtectRoute } from './middleware/auth'
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
     {
         path : '/add-job',
         element : <AddJob></AddJob>
+    },
+    {
+        path : '/job/:id',
+        element : <EditJob></EditJob>
     },
     {
         path : '/add-applicant',

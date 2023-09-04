@@ -27,6 +27,7 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const style = {
   position: "absolute",
@@ -39,6 +40,14 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#1976d2',
+    },
+  },
+});
 
 export default function BasicTable() {
   const navigate = useNavigate();
@@ -111,7 +120,8 @@ export default function BasicTable() {
   };
   return (
     <>
-    <AppBar position="static">
+    <ThemeProvider theme={darkTheme}>
+    <AppBar position="static" enableColorOnDark>
         <Toolbar>
           
             <div>
@@ -264,6 +274,7 @@ export default function BasicTable() {
           </Table>
         </TableContainer>
       </Card>
+      </ThemeProvider>
     </>
   );
 }
