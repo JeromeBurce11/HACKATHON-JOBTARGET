@@ -10,7 +10,5 @@
 
 body{
     background: #dcdce6;
-    background-repeat: no-repeat; 
-    background-size: cover;
-    background-image: url('./assets/wave-haikei.png');
+    background-image: url('./assets/Background.png');
 }

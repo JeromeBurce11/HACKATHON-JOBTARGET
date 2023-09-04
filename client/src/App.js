@@ -14,7 +14,9 @@ import AddApplicant from  './components/AddApplicant';
 import EditApplicant from './components/EditApplicant';
 import JobPosting from './components/JobPosting';
 import AddJob from './components/AddJob';
-import EditJob from './components/EditJob'
+import EditJob from './components/EditJob';
+import ViewDetails from './components/ViewDetails';
+import ApplicantDashboard from './components/ApplicantDashboard';
 
 /** auth middleware */
 import { AuthorizeUser, ProtectRoute } from './middleware/auth'
@@ -23,6 +25,10 @@ import { AuthorizeUser, ProtectRoute } from './middleware/auth'
 const router = createBrowserRouter([
     {
         path : '/',
+        element : <ApplicantDashboard></ApplicantDashboard>
+    },
+    {
+        path : '/login',
         element : <Username></Username>
     },
     {
@@ -48,6 +54,10 @@ const router = createBrowserRouter([
     {
         path : '/applicant/:id',
         element : <EditApplicant></EditApplicant>
+    },
+    {
+        path : '/view-job/:id',
+        element : <ViewDetails></ViewDetails>
     },
     {
         path : '/register',

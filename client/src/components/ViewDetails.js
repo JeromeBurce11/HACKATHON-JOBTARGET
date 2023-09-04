@@ -170,7 +170,7 @@ export default function Profile() {
           style={{ width: "75%"}}
         >
           <div className="title flex flex-col items-center">
-            <h4 className="text-5xl font-bold mt-3">Job</h4>
+            <h4 className="text-5xl font-bold mt-3">Job Details</h4>
             <span className="py-4 text-xl w-2/3 text-center text-gray-500">
               Add new Job.
             </span>
@@ -179,36 +179,41 @@ export default function Profile() {
           <form className="py-1">
             <div className="textbox flex flex-col items-center gap-6">
               
-
               <input
                 className={`${styles.textbox} ${extend.textbox}`}
                 type="text"
-                value={title}
+                value={`Title :  `+title}
                 placeholder="Title"
+                disabled
                 required
                 onChange={handleChangeTitle}
 
-              />              <input
+              />             <input
               className={`${styles.textbox} ${extend.textbox}`}
               type="text"
-              value={description}
+              value={`Description :  `+description}
+              disabled
               placeholder="Description "
               onChange={handleChangeDescription}
 
             />
+             
               <input
                 className={`${styles.textbox} ${extend.textbox}`}
                 type="text"
-                value={companyName}
+                value={`Company Name :  `+companyName}
                 placeholder="CompanyName"
+                disabled
                 required
                 onChange={handleChangeCompanyName}
 
-              />              <input
+              />       
+                  <input
               className={`${styles.textbox} ${extend.textbox}`}
               type="text"
-              value={applyUrl}
+              value={`ApplyUrl :  `+applyUrl}
               placeholder="ApplyUrl "
+              disabled
               onChange={handleChangeApplyUrl}
 
             />
@@ -216,186 +221,217 @@ export default function Profile() {
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text"
-                  value={experience}
+                  value={`Experience :  `+experience}
                   placeholder="Experience"
+                  disabled
                   required
                   onChange={handleChangeExperience}
                 />
+              
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text"
-                  value={jobFunction}
+                  value={`JobFunction :  `+jobFunction}
                   placeholder="JobFunction"
+                  disabled
                   required
                   onChange={handleChangeJobFunction}
                 />
               </div>
               <div className="name flex w-3/4 gap-10">
+            
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text"
-                  value={industry}
+                  value={`Industry :  `+industry}
+                  disabled
                   placeholder="Industry"
                   required
                   onChange={handleChangeIndustry}
                 />
+                
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text"
-                  value={jobType}
+                  value={`JobType :  `+jobType}
                   placeholder="JobType"
+                  disabled
                   required
                   onChange={handleChangeJobType}
                 />
               </div>
+              
               <input
               className={`${styles.textbox} ${extend.textbox}`}
               type="text"
-              value={requirements}
+              value={`Requirments :  `+requirements}
+              disabled
               placeholder="Requirements "
               onChange={handleChangeRequirements}
 
             />
             <div className="name flex w-3/4 gap-10">
+            
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text"
-                  value={duration}
+                  disabled
+                  value={`Duration :  `+duration}
                   placeholder="Duration"
                   required
                   onChange={handleChangeDuration}
                 />
+                
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text"
-                  value={salaryLow}
+                  value={`Salary Low :  `+salaryLow}
                   placeholder="SalaryLow"
+                  disabled
                   required
                   onChange={handleChangeSalaryLow}
                 />
               </div>
               
               <div className="name flex w-3/4 gap-10">
+              
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text"
-                  value={salaryHigh}
+                  value={`Salary High :  `+salaryHigh}
+                  disabled
                   placeholder="Salary High"
                   required
                   onChange={handleChangeSalaryHigh}
                 />
+             
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text"
-                  value={education}
+                  value={`Education :  `+education}
+                  disabled
                   placeholder="Education"
                   required
                   onChange={handleChangeEducation}
                 />
               </div>
               <div className="name flex w-3/4 gap-10">
+              
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text" 
-                  value={salaryType}
+                  value={`Salary Type :  `+salaryType}
+                  disabled
                   placeholder="SalaryType"
                   required
                   onChange={handleChangeSalaryType}
                 />
+                
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text"
-                  value={contactName}
+                  value={`Contact Name :  `+contactName}
                   placeholder="ContactName"
+                  disabled
                   required
                   onChange={handleChangeContactName}
                 />
               </div>
               <div className="name flex w-3/4 gap-10">
+            
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text" 
-                  value={entryLevel}
+                  value={`Entry Level :  `+entryLevel}
                   placeholder="Entry Level"
                   required
                   onChange={handleChangeEntryLevel}
+                  disabled
                 />
+              
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text"
-                  value={contactPhone}
+                  value={`Contact Phone :  `+contactPhone}
                   placeholder="Contact Phone"
                   required
+                  disabled
                   onChange={handleChangeContactPhone}
                 />
               </div>
               <div className="name flex w-3/4 gap-10">
-              <p>City</p>
+            
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text" 
-                  value={city}
+                  value={`City :  `+city}
                   placeholder="City"
                   required
+                  disabled
                   onChange={handleChangeCity}
                 />
-                <p>State</p>
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text"
-                  value={state}
+                  value={`State :  `+state}
                   placeholder="State"
+                  disabled
                   required
                   onChange={handleChangeState}
                 />
               </div>
               <div className="name flex w-3/4 gap-10">
-              <p>Region</p>
+             
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text" 
-                  value={region}
+                  disabled
+                  value={`Region :  `+region}
                   placeholder="Region"
                   required
                   onChange={handleChangeRegion}
                 />
-                <p>Country</p>
+                
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text"
-                  value={country}
+                  disabled
+                  value={`Country :  `+country}
                   placeholder="Country"
                   required
                   onChange={handleChangeCountry}
                 />
               </div>
               <div className="name flex w-3/4 gap-10">
-              <p>Zip</p>
+             
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text" 
-                  value={zip}
+                  value={`Zip :  `+zip}
+                  disabled
                   placeholder="Zip"
                   required
                   onChange={handleChangeZip}
                 />
-                <p>Postal Code</p>
+               
                 <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text"
-                  value={postalCode}
+                  value={`Postal Code :  `+postalCode}
                   placeholder="Postal Code"
+                  disabled
                   required
                   onChange={handleChangePostalCode}
                 />
               </div>
-              <p>Contact Email</p>
+            
               <input
                   className={`${styles.textbox} ${extend.textbox}`}
                   type="text"
-                  value={contactEmail}
+                  value={`Contact Email :  `+contactEmail}
                   placeholder="Contact Email"
                   required
+                  disabled
                   onChange={handleChangesContactEmail}
                 />
              

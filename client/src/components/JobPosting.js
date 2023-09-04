@@ -65,6 +65,9 @@ export default function BasicTable() {
   const handleEditJob =(id)=>{
     navigate(`/job/${id}`);
   }
+  const handleViewJob = (id)=>{
+    navigate(`/view-job/${id}`);
+  }
 
   const handleAddJob = () => {
     navigate("/add-job");
@@ -102,6 +105,7 @@ export default function BasicTable() {
   function handleJobPosting(){
     navigate('/job')
   }
+ 
   function handleApplicants(){
     navigate('/applicant')
   }
@@ -233,7 +237,7 @@ export default function BasicTable() {
                       variant="contained"
                       color="success"
                       margin={2}
-                    //   onClick={() => handleVi(row._id)}/
+                      onClick={() => handleViewJob(row._id)}
                     >
                       View Details
                     </Button>
